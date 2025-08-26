@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Aduan Masyarakat</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f7f9fc;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .form-container {
+        background: #fff;
+        padding: 20px 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        width: 350px;
+    }
+    .form-container img {
+        display: block;
+        margin: 0 auto 10px auto; /* Center horizontally */
+        max-width: 120px;
+        height: auto;
+    }
+    .form-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: bold;
+        color: #444;
+        text-align: left;
+    }
+    input[type="text"],
+    input[type="tel"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+    textarea {
+        resize: vertical;
+        min-height: 80px;
+    }
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #007bff;
+        border: none;
+        border-radius: 6px;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    button:hover {
+        background: #0056b3;
+    }
+    
+</style>
+</head>
+<body>
+
+<div class="form-container">
+
+    <img src="LOGO-DAMKAR.png" width="auto" height="130px">
+
+    <h2>Form Aduan Masyarakat</h2>
+    <form id="aduanForm">
+        <label for="nama">Nama Pelapor</label>
+        <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda" required>
+
+        <label for="jenis">Jenis Aduan</label>
+        <select id="jenis" name="jenis" required>
+            <option value="">-- Pilih Jenis Aduan --</option>
+            <option value="Aduan Ular">Aduan Ular</option>
+            <option value="Aduan Tawon">Aduan Tawon</option>
+            <option value="Lainnya">Lainnya</option>
+        </select>
+
+        <label for="alamat">Alamat</label>
+        <input type="text" id="alamat" name="alamat" placeholder="Masukkan alamat" required>
+
+        <label for="nohp">No HP</label>
+        <input type="tel" id="nohp" name="nohp" placeholder="Masukkan nomor HP" pattern="[0-9]{10,13}" required>
+
+        <label for="detail">Detail Aduan</label>
+        <textarea id="detail" name="detail" placeholder="Jelaskan detail aduan Anda" required></textarea>
+
+        <button type="submit">Kirim Aduan</button>
+    </form>
+</div>
+
+<script>
+document.getElementById('aduanForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Ambil nilai dari form
+    const nama = document.getElementById('nama').value;
+    const jenis = document.getElementById('jenis').value;
+    const alamat = document.getElementById('alamat').value;
+    const nohp = document.getElementById('nohp').value;
+    const detail = document.getElementById('detail').value;
+
+    // Format pesan WhatsApp
+    const pesan = `*FORM ADUAN MASYARAKAT*\n` +
+                  `Nama Pelapor: ${nama}\n` +
+                  `Jenis Aduan: ${jenis}\n` +
+                  `Alamat: ${alamat}\n` +
+                  `No HP: ${nohp}\n` +
+                  `Detail Aduan:\n${detail}`;
+
+    // Nomor tujuan
+    const nomor = '6288225343353'; // Gunakan format internasional (62 untuk Indonesia)
+
+    // Buat URL WA
+    const url = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
+
+    // Redirect ke WhatsApp
+    window.open(url, '_blank');
+});
+</script>
+
+</body>
+</html>
