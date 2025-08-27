@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Form Aduan Masyarakat</title>
-<title>Ke Damkar Kab. Brebes</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -30,10 +29,20 @@
         height: auto;
     }
     .form-container h2 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #333;
-    }
+    text-align: center;
+    color: #002057; /* Biru tua */
+    margin: 5px 0; /* Mengecilkan jarak atas dan bawah */
+    font-size: 20px; /* Opsional: agar lebih seimbang */
+}
+
+/* Jika ingin atur spesifik untuk h2 pertama dan kedua */
+.form-container h2:first-of-type {
+    margin-bottom: 3px; /* Jarak bawah kecil */
+}
+
+.form-container h2:last-of-type {
+    margin-bottom: 15px; /* Jarak ke form sedikit lebih besar */
+}
     label {
         display: block;
         margin-bottom: 6px;
@@ -59,7 +68,7 @@
     button {
         width: 100%;
         padding: 12px;
-        background: #007bff;
+        background: #002057;
         border: none;
         border-radius: 6px;
         color: white;
@@ -72,6 +81,7 @@
         background: #0056b3;
     }
     
+    
 </style>
 </head>
 <body>
@@ -80,7 +90,9 @@
 
     <img src="LOGO-DAMKAR.png" width="auto" height="130px">
 
-    <h2>Form Aduan Masyarakat Ke Damkar Kabupaten Brebes</h2>
+    <h2>Form SI UMAR</h2>
+    <h2>Damkar Kabupaten Brebes</h2>
+<br> 
     <form id="aduanForm">
         <label for="nama">Nama Pelapor</label>
         <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda" required>
@@ -131,12 +143,10 @@ document.getElementById('aduanForm').addEventListener('submit', function(e) {
     // Buat URL WA
     const url = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
 
-    // Redirect ke WhatsApp
+    // Redirect ke Whatsap
     window.open(url, '_blank');
 });
 </script>
 
 </body>
 </html>
-
-
